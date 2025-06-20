@@ -18,6 +18,9 @@ namespace FrontSklepu
                 });
             builder.Services.AddSingleton<DesktopHomePageViewModel>();
             builder.Services.AddSingleton<DesktopHomePage>();
+
+            builder.Services.AddSingleton<AddProductPage>();
+            builder.Services.AddSingleton<AddProductPageViewModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

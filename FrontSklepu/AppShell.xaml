@@ -13,4 +13,11 @@
         ContentTemplate="{OnIdiom Desktop={DataTemplate desktopHomePage:DesktopHomePage}, Phone={DataTemplate local:MainPage}}"
         Route="MainPage" />
 
-</Shell>
+        <FlyoutItem Title="AddProduct"
+                Icon="addproduct.png">
+            <Tab>
+                <ShellContent ContentTemplate="{DataTemplate desktopHomePage:AddProductPage}" />
+            </Tab>
+        </FlyoutItem>
+        
+    </Shell>
