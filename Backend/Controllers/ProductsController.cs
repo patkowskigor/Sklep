@@ -14,9 +14,12 @@ namespace Backend.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
-        public ProductsController(IProductService productService)
+        private readonly ICategoryService categoryService;
+
+        public ProductsController(IProductService productService, ICategoryService categoryService)
         {
             this.productService = productService;
+            this.categoryService = categoryService;
         }
 
         [HttpGet]
@@ -71,6 +74,9 @@ namespace Backend.Controllers
                 return BadRequest(result);
         }
 
+
+        [HttpGet("categories")]
+        public async Task<ActionResult<List<Category>>> GetCategoriesAsync() => Ok(await categoryService.GetCategoriesAsync());
     }
 
 }

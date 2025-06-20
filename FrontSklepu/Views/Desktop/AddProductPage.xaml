@@ -2,11 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FrontSklepu.Views.Desktop.AddProductPage"
-             Title="AddProductPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             xmlns:viewmode="clr-namespace:FrontSklepu.ViewModels"
+             x:DataType="viewmode:AddProductPageViewModel"
+             Title="{Binding Title}"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:editors="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs">
+    
+    
+    <VerticalStackLayout Spacing="8" Margin="10,10,10,0" WidthRequest="500">
+        <inputLayout:SfTextInputLayout Hint="Product Name">
+            <Entry Text="{Binding AddProductModel.Name}" />
+        </inputLayout:SfTextInputLayout>
+
+        <inputLayout:SfTextInputLayout Hint="Product Description">
+            <Editor AutoSize="TextChanges" Text="{Binding AddProductModel.Description}"/>
+        </inputLayout:SfTextInputLayout>
+
+        <inputLayout:SfTextInputLayout Hint="Product Category">
+            <editors:SfComboBox />
+        </inputLayout:SfTextInputLayout>
+
+        <inputLayout:SfTextInputLayout Hint="Product Price ">
+            <Entry Text="{Binding AddProductModel.Price}" />
+        </inputLayout:SfTextInputLayout>
+
+        <inputLayout:SfTextInputLayout Hint="Product Quantity">
+            <Entry Text="{Binding AddProductModel.Quantity}" />
+        </inputLayout:SfTextInputLayout>
+        
     </VerticalStackLayout>
 </ContentPage>

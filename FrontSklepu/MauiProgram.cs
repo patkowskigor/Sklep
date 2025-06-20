@@ -1,6 +1,8 @@
-﻿using FrontSklepu.ViewModels;
+﻿using FrontSklepu.Services;
+using FrontSklepu.ViewModels;
 using FrontSklepu.Views.Desktop;
 using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace FrontSklepu
 {
@@ -11,6 +13,7 @@ namespace FrontSklepu
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .ConfigureSyncfusionCore()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -21,6 +24,8 @@ namespace FrontSklepu
 
             builder.Services.AddSingleton<AddProductPage>();
             builder.Services.AddSingleton<AddProductPageViewModel>();
+
+            builder.Services.AddHttpClient<IProductService, ProductService >();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
